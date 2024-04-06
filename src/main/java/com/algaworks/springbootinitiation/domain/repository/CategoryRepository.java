@@ -13,7 +13,6 @@ import com.algaworks.springbootinitiation.domain.model.Category;
 public class CategoryRepository {
 	
 	private Map<Long, Category> categories = new HashMap<>();
-//	categories. (new Category(1L, ""));
 
 	public void save(Category category) {
 		categories.put(category.getId(), category);
