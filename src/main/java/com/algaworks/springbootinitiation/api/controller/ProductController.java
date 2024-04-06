@@ -27,7 +27,7 @@ public class ProductController {
 	
 	@GetMapping(value = "/{productId}")
 	public ResponseEntity<Product> findById(@PathVariable Long productId){
-		Product product = productRepository.findById(productId);
+		Product product = productRepository.findById(productId).get();
 		return ResponseEntity.ok(product);
 	}
 }

@@ -27,13 +27,13 @@ public class SpringbootInitiationApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Category category1 = new Category(1L, "Electronics"); 
-		Category category2 = new Category(2L, "Books");
+		Category category1 = new Category(null, "Electronics"); 
+		Category category2 = new Category(null, "Books");
 		
-		Product product1 = new Product(1L, "TV", 2200.0, category1);
-		Product product2 = new Product(2L, "Domain Driven Design", 120.0, category2);
-		Product product3 = new Product(3L, "PS5", 2800.0, category1);
-		Product product4 = new Product(4L, "Docker", 100.0, category2);
+		Product product1 = new Product(null, "TV", 2200.0, category1);
+		Product product2 = new Product(null, "Domain Driven Design", 120.0, category2);
+		Product product3 = new Product(null, "PS5", 2800.0, category1);
+		Product product4 = new Product(null, "Docker", 100.0, category2);
 		
 		category1.getProducts().addAll(Arrays.asList(product1, product3));
 		category2.getProducts().addAll(Arrays.asList(product2, product4));
