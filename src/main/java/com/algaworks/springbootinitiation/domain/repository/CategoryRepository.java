@@ -18,11 +18,11 @@ public class CategoryRepository {
 		categories.put(category.getId(), category);
 	}
 	
-	public Category findById(Long categoryId) {
-		return categories.get(categoryId);
-	}
-	
 	public List<Category> findAll(){
 		return new ArrayList<Category>(categories.values());
+	}
+	
+	public Category findById(Long categoryId) {
+		return categories.get(categoryId);
 	}
 }

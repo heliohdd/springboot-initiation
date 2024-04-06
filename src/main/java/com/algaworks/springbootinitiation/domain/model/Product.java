@@ -1,20 +1,16 @@
 package com.algaworks.springbootinitiation.domain.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToOne;
 
 @Entity
-public class Category implements Serializable {
+public class Product implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -24,16 +20,19 @@ public class Category implements Serializable {
 
 	private String name;
 
-	@JsonIgnore
-	@OneToMany(mappedBy = "category")
-	private List<Product> products = new ArrayList<>();
+	private Double price;
 
-	public Category() {
+	@ManyToOne
+	private Category category;
+
+	public Product() {
 	}
 
-	public Category(Long id, String name) {
+	public Product(Long id, String name, Double price, Category category) {
 		this.id = id;
 		this.name = name;
+		this.price = price;
+		this.category = category;
 	}
 
 	public Long getId() {
@@ -52,12 +51,20 @@ public class Category implements Serializable {
 		this.name = name;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public Double getPrice() {
+		return price;
 	}
 
-	public List<Product> getProducts() {
-		return products;
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
 	@Override
@@ -73,7 +80,7 @@ public class Category implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Category other = (Category) obj;
+		Product other = (Product) obj;
 		return Objects.equals(id, other.id);
 	}
 
