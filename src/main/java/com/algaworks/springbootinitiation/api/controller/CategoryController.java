@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,8 +16,6 @@ import com.algaworks.springbootinitiation.domain.model.Category;
 @RequestMapping(value = "/categories")
 public class CategoryController {
 
-//	private CategoryRepository categoryRepository;
-	
 	@GetMapping
 	public ResponseEntity<List<Category>> findAll() {
 		List<Category> categories = new ArrayList<>();
@@ -25,4 +24,9 @@ public class CategoryController {
 		return ResponseEntity.ok().body(categories);
 	}
 	
+	@GetMapping("/{categoryId}")
+	public ResponseEntity<Category> findById(@PathVariable Long categoryId){
+		Category category = new Category(1L, "Electronics");
+		return ResponseEntity.ok(category);
+	}
 }
